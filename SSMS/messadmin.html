@@ -1,0 +1,64 @@
+<html><head></head><body>
+<?php
+include "db.php";
+$mess=$_SESSION['mess'];
+$sql3="Select * from complaints  where author_mess='$mess' and status=0";
+$result3 = mysqli_query($con,$sql3);
+$i=0;
+while ($row = mysqli_fetch_array($result3))
+{
+$complaint_id["$i"]=$row['complaint_id'];
+$complaint["$i"]=$row['complaint'];
+$author_bitsid["$i"]=$row['author_bitsid'];
+$author_photo["$i"]=$row['author_photo'];
+$time["$i"]= $row['time'];
+$author_name["$i"]=$row['author_name'];
+
+
+$i++;
+}
+
+
+?>
+
+ <div class="grid_12 box-2">
+            	<div><h2 class="current">Complaints in <?php echo $_SESSION['mess'];?> Mess</h2>
+				<?php for($a=0;$a<$i;$a++)
+				{
+				echo"<table><tr><td><img src=$author_photo[$a] width=70px height=72px></td><td>$complaint[$a]</td></tr></table>$author_name[$a] | Added:$time[$a] <form id=form method=post action=reply.php > <input type=hidden value=$complaint_id[$a] name=cid><input type=hidden value=$author_bitsid[$a] name=reply_to_bitsid></input>                                                   
+                    <fieldset><img src= $photo width=70px height=72px style=position:absolute;left:0px;>  
+					 <textarea name=reply style=position:absolute;left:70px;  >Post a reply.</textarea>
+                      <br><br><br><div class=btns><a href=# class=button>Clear</a><a href=# class=button onClick=document.getElementById('form').submit()>Post</a></div>
+                    </fieldset>  
+                  </form> <hr>";
+				}
+                    ?>
+                </div>
+            </div>
+            <div class="grid_8">
+            	<h2 class="top-1">Important ! Login | Sign Up Process</h2>
+                <div class="box-3">
+                	To login you must have your Google BitsMail Account Activated.<br>
+					Steps to Register:<br>
+					1.Goto MySSMS link.Click on signup.<br>
+					2.Enter your BitsMail ID.<br>
+					3.The site will send a temporary activation key to your BitsMail.<br>
+					4.Enter the temporary activation key in the field asking for it.<br>
+					5.You have completed the registration process.<br>
+                </div>
+                <a href="#" class="button top-4">Read More</a>
+            </div>
+            <div class="grid_4">
+            	<h2 class="top-1">Latest Events</h2>
+                <div class="box-4 top-2">
+                    <div class="date"><strong>18</strong><span>Oct, 2012</span></div>
+                    <p><a href="#" class="link">ANC Opens after 2 months.</p>
+                </div>
+                
+                <a href="#" class="button top-4">Read More</a>
+            </div>    
+            <div class="clear"></div>
+        </div>
+    </section> 
+	
+

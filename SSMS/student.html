@@ -1,0 +1,41 @@
+<html><head></head><body>
+ <div class="grid_12 box-2">
+            	<div><h2 class="current">Post something in your mess group</h2>
+                    <form id="form" method="post" action="postsave.php" >                                                             
+                    <fieldset><img src=<?php echo $photo;?> width=70px height=72px style="position:absolute;left:0px;">  
+					 <textarea style="position:absolute;left:70px;" name="complaint" onBlur="if(this.value==''){this.value='Message'}" onFocus="if(this.value=='Message'){this.value=''}">Have Complaints?Post them here and we will see that they get resolved soon.</textarea>
+                      <br><br><br><div class="btns"><a href="#" class="button">Clear</a><a href="#" class="button" onClick="document.getElementById('form').submit()">Post</a></div>
+                    </fieldset>  
+					<input type="hidden" name="author_photo" value=<?php echo "$photo";?>>
+					<input type="hidden" name="author_name" value="<?php echo $Name[0];?>">
+					<input type="hidden" name="author_id" value=<?php echo "$bitsid";?>>
+                  </form> 
+                </div>
+				<h2 class="current">Replies to your earlier Posts</h2>
+				<?php for($a=0;$a<$i;$a++)
+				{
+				echo"<table><tr><td><img src=$reply_author_photo[$a] width=70px height=72px></td><td>$reply[$a]</td></tr></table>Replied by:$reply_author[$a] <hr>";
+				}
+                    ?>
+            </div>
+            <div class="grid_8">
+            	<h2 class="top-1">iSSMS</h2>
+                <div class="box-3">
+				iSSMS allows you to communicate with the SSMS body at a more personal level.You can post your queries here and get replies from SSMS Council members.<br>Apart from this the site will be providing you with your Mess and ANC Extra details in detailed way.This service is currently on hold but we will start with it once we get the data from all the messes.
+                	So you can expect to track your mess extras from within a week.<br>
+                </div>
+               
+            </div>
+            <div class="grid_4">
+            	<h2 class="top-1">Latest Events</h2>
+                <div class="box-4 top-2">
+                    
+                    <p><a href="#" class="link">Look out for this space for latest happening and notices.</p>
+                </div>
+              
+            </div>    
+            <div class="clear"></div>
+        </div>
+    </section> 
+	
+
